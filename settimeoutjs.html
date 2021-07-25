@@ -1,0 +1,67 @@
+<!-- 
+    Set Timout 
+    setTimeout(callback_function, delay_milliseconds);
+    setTimeout(function() {
+    console.log("should print after 2sec");}, 2000);
+    42001
+    entry-main-modern-vendor.582a53d398fcd871cd2b.js:1 should print after 2sec
+    clearTimeout(2)
+ -->
+
+<html>
+
+<head>
+    <title>
+        Slide show
+    </title>
+    <!-- <script>
+        var pictures = ['./images/1_img.jpg', './images/2_img.jpg', './images/3_img.jpg', './images/4_img.jpg', './images/5_img.jpg', './images/6_img.jpg', './images/7_img.jpg',]
+        function load() {
+            // console.log('in load');
+            // document.getElementById("img").src = pictures[0];
+            changePic(0);
+        }
+        function changePic(n) {
+            document.getElementById("img").src = pictures[n % pictures.length];
+            setTimeout(function () { changePic(n + 1); }, 2000)
+        }
+    </script> -->
+
+
+    <script>
+        //  Using XMLHttpRequest object
+
+        var pictures = [];
+        function load() {
+            getPictrues();
+        }
+        function getPictrues() {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "pictures.json", true);
+            xmlhttp.onload = function (event) {
+                pictures = JSON.parse(xmlhttp.responseText);
+                changePic(0)
+            }
+            xmlhttp.onerror = function (event) {
+                alert("an error has occured!");
+            }
+
+            xmlhttp.send();
+        }
+        function changePic(n) {
+            document.getElementById("img").src = pictures[n % pictures.length];
+            setTimeout(function () { changePic(n + 1); }, 2000)
+        }
+    </script>
+</head>
+
+<body onload="load();">
+    <h1 id="myHeader">
+        My Picture
+    </h1>
+    <div id="image_canvas" style="width:750px;height:497px;margin:0 auto;">
+        <img id="img" style="height:100%;width:100%">
+    </div>
+</body>
+
+</html>
