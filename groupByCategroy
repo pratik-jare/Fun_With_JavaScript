@@ -1,0 +1,18 @@
+let product = [
+    { name: 'sss', category: 'abc' },
+    { name: 'los', category: 'xyz' },
+    { name: 'rrr', category: 'abc' },
+    { name: 'sop', category: 'xyz' },
+]
+
+let objectMap: any = {}
+
+product.forEach((data) => {
+    if (objectMap[data.category]) {
+        objectMap[data.category].push(data);
+    } else {
+        objectMap[data.category] = [data]
+    }
+})
+
+console.log(objectMap)
