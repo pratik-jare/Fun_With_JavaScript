@@ -1,5 +1,11 @@
 let str = 'I Am doing good, thank you.';
 
+
+
+reverseSentencewords(str);
+reverse(str);
+reverseWordsOnly(str);
+
 function reverseSentencewords(str: any) {
     let arr = str.split(' ');
 
@@ -15,8 +21,6 @@ function reverseSentencewords(str: any) {
     console.log(result)
 
 }
-
-reverseWordsOnly(str);
 
 function reverse(str: any) {
     let result: any = [];
